@@ -1,0 +1,43 @@
+# Proyecto a validar. Las rutas son relativas a `repo`.
+nombre: Wallet Perú · Registro y activación
+repo: ../wallet-onboarding-mvp
+# Repo de GitHub donde se crean las issues de hallazgos (python validar.py --crear-issues).
+github: user-bcp-student10/wallet-onboarding-mvp
+
+spec: specs/001-registro-activacion/spec.md
+plan: specs/001-registro-activacion/plan.md
+contrato: specs/001-registro-activacion/contracts/openapi.yaml
+
+# Verificaciones deterministas. Se ejecutan en el repo antes de los agentes y su
+# salida REAL se entrega a Testing y Chapter. `python` se reemplaza por el
+# intérprete del entorno virtual del repo (.venv) si existe.
+evidencia:
+  - nombre: Pruebas automatizadas
+    comando: [python, -m, pytest, -q, -p, no:cacheprovider]
+  - nombre: Trazabilidad spec → pruebas
+    comando: [python, tools/check_trazabilidad.py]
+  - nombre: Contrato OpenAPI → API real
+    comando: [python, tools/check_contrato.py]
+
+# Archivos que recibe cada rol, además de la spec (y del plan y el contrato si el rol los usa).
+archivos:
+  architect:
+    - specs/001-registro-activacion/tasks.md
+    - docs/supuestos-y-decisiones.md
+  backend:
+    - app/*.py
+  frontend:
+    - frontend/index.html
+    - frontend/app.js
+    - frontend/styles.css
+  testing:
+    - tests/*.py
+  security:
+    - app/*.py
+    - frontend/app.js
+    - Dockerfile
+    - requirements.txt
+  chapter: []
+
+# Tope de caracteres de código por rol; lo que exceda se recorta y se avisa al agente.
+limite_caracteres: 120000

@@ -1,0 +1,98 @@
+{
+  "proyecto": "Wallet Perú · Registro y activación",
+  "commit": "cd6d7253bf3ed565daee07fb83b64277227340fd",
+  "modelo": "copilot:gpt-6-luna",
+  "fecha": "2026-10-30T19:24:06+00:00",
+  "evidencia_ok": true,
+  "evidencia": [
+    {
+      "nombre": "Pruebas automatizadas",
+      "comando": "python -m pytest -q -p no:cacheprovider",
+      "codigo_salida": 0,
+      "duracion_s": 3.46,
+      "salida": null,
+      "ok": true
+    },
+    {
+      "nombre": "Trazabilidad spec → pruebas",
+      "comando": "python tools/check_trazabilidad.py",
+      "codigo_salida": 0,
+      "duracion_s": 0.11,
+      "salida": null,
+      "ok": true
+    },
+    {
+      "nombre": "Contrato OpenAPI → API real",
+      "comando": "python tools/check_contrato.py",
+      "codigo_salida": 0,
+      "duracion_s": 0.58,
+      "salida": null,
+      "ok": true
+    }
+  ],
+  "roles": [
+    {
+      "rol": "Architect",
+      "informe": "architect_review.md",
+      "veredicto": "NO CUMPLE",
+      "hallazgos": {
+        "ALTA": 3,
+        "MEDIA": 9,
+        "BAJA": 1
+      }
+    },
+    {
+      "rol": "Backend",
+      "informe": "backend_review.md",
+      "veredicto": "NO CUMPLE",
+      "hallazgos": {
+        "ALTA": 3,
+        "MEDIA": 8,
+        "BAJA": 0
+      }
+    },
+    {
+      "rol": "Frontend",
+      "informe": "frontend_review.md",
+      "veredicto": "NO CUMPLE",
+      "hallazgos": {
+        "ALTA": 3,
+        "MEDIA": 3,
+        "BAJA": 0
+      }
+    },
+    {
+      "rol": "Testing",
+      "informe": "testing_review.md",
+      "veredicto": "NO CUMPLE",
+      "hallazgos": {
+        "ALTA": 1,
+        "MEDIA": 9,
+        "BAJA": 0
+      }
+    },
+    {
+      "rol": "Security",
+      "informe": "security_review.md",
+      "veredicto": "NO CUMPLE",
+      "hallazgos": {
+        "ALTA": 4,
+        "MEDIA": 3,
+        "BAJA": 1
+      }
+    },
+    {
+      "rol": "Chapter",
+      "informe": "chapter_review.md",
+      "veredicto": "RECHAZADO",
+      "hallazgos": {
+        "ALTA": 0,
+        "MEDIA": 0,
+        "BAJA": 0
+      }
+    }
+  ],
+  "detenido_en": null,
+  "resultado": "RECHAZADO",
+  "motivo": "Veredicto del Chapter, con la evidencia ejecutada en verde."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Pruebas automatizadas",
+    "comando": "python -m pytest -q -p no:cacheprovider",
+    "codigo_salida": 0,
+    "duracion_s": 3.46,
+    "salida": "....................................................                     [100%]\n52 passed in 2.49s",
+    "ok": true
+  },
+  {
+    "nombre": "Trazabilidad spec → pruebas",
+    "comando": "python tools/check_trazabilidad.py",
+    "codigo_salida": 0,
+    "duracion_s": 0.11,
+    "salida": "Trazabilidad spec → pruebas\n  ✓ CA-1: tests/test_ca1_pasos_visibles.py (5 funciones de prueba)\n  ✓ CA-2: tests/test_ca2_validaciones.py (6 funciones de prueba)\n  ✓ CA-3: tests/test_ca3_activacion.py (5 funciones de prueba)\n  ✓ CA-4: tests/test_ca4_eventos.py (5 funciones de prueba)\n  ✓ CA-5: tests/test_ca5_ca6_analitica.py (7 funciones de prueba)\n  ✓ CA-6: tests/test_ca5_ca6_analitica.py (7 funciones de prueba)\nOK",
+    "ok": true
+  },
+  {
+    "nombre": "Contrato OpenAPI → API real",
+    "comando": "python tools/check_contrato.py",
+    "codigo_salida": 0,
+    "duracion_s": 0.58,
+    "salida": "Contrato (13 operaciones) frente a la API real\nOK",
+    "ok": true
+  }
+]

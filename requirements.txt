@@ -1,0 +1,4 @@
+crewai>=1.15.26,<2
+github-copilot-sdk>=1.0.19,<2
+python-dotenv>=1.0.0
+pyyaml>=6.0

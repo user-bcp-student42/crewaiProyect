@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt pytest
+      - run: python -m pytest -v
+
+  validacion-wallet:
+    # Ejecuta el flujo contra el repo de la wallet sin modelo: evidencia real + roles simulados.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: user-bcp-student10/wallet-onboarding-mvp
+          path: wallet-onboarding-mvp
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt -r wallet-onboarding-mvp/requirements-dev.txt
+      - name: Evidencia determinista
+        run: python validar.py --repo wallet-onboarding-mvp --solo-evidencia
+      - name: Flujo completo con roles simulados
+        env:
+          LLM_PROVIDER: simulado
+        run: python validar.py --repo wallet-onboarding-mvp --auto --reiniciar || test "$(python -c "import json;print(json.load(open('output/resumen.json'))['resultado'])")" = "NO CONCLUYENTE"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: informes
+          path: output/
