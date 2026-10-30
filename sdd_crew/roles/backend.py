@@ -24,8 +24,8 @@ Valida el código del servidor contra la spec y el contrato:
 4. CA-4: que cada transición emita el evento exigido, en el orden de la spec, incluso cuando el
    paso falla (paso_fallido) o el usuario sale.
 5. CA-5 y CA-6: que la fórmula de la mediana siga DEC-1 y que el CAC sea null sin gasto.
-6. Robustez: estado inconsistente si una operación falla a mitad, concurrencia sobre el archivo,
-   manejo de errores no previstos.
+6. Robustez: revisa fallos parciales, consistencia del estado, concurrencia al escribir el archivo 
+   y manejo de errores; distingue incumplimientos de la spec de riesgos técnicos de problemas operativos.
 
 No evalúes la interfaz (Frontend) ni hagas un análisis de amenazas (Security).
 """,
