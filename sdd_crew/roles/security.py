@@ -22,14 +22,22 @@ Valida la seguridad y la privacidad contra la spec:
 3. Datos personales: DNI, nombres, celular, fecha de nacimiento y clave. ¿Dónde se guardan, se
    devuelven, se registran en eventos o logs? ¿Se enmascaran según RS-4?
 4. Credenciales: algoritmo, sal e iteraciones del hash de la clave (RS-2); comparación de secretos;
-   OTP.
-5. Inyección y salida: inserción de datos en HTML (XSS), rutas de archivos, deserialización,
-   errores que filtren detalles internos (RS-5).
+   OTP; limitación de intentos o bloqueo en login y OTP; vida útil de tokens y sesiones.
+5. Inyección y salida: inyección SQL y de comandos, inserción de datos en HTML (XSS), rutas de
+   archivos, deserialización, errores que filtren detalles internos (RS-5).
 6. Configuración y despliegue: endpoints de demo habilitados por defecto, usuario del contenedor,
-   dependencias, CORS, cabeceras de seguridad.
+   dependencias, CORS, cabeceras de seguridad, TLS.
+7. Autorización: que cada operación verifique que el recurso pertenece al usuario autenticado, no solo
+   que el id exista. Busca secretos hardcodeados en código, `Dockerfile` y configuración.
+8. Informe: separa riesgos detectados, correcciones propuestas y verificaciones ejecutadas. Para cada
+   corrección indica un comando o prueba reproducible que la valide. No declares nada como verificado
+   si no se ejecutó.
 
-Cada hallazgo debe tener impacto concreto, no genérico. No afirmes que algo es seguro sin citar la línea.
+Cada hallazgo debe tener impacto concreto, no genérico, ubicación o requisito afectado, severidad (alta,
+media o baja), evidencia y el control OWASP ASVS o CWE que incumple. No afirmes que algo es seguro sin
+citar la línea.
 """,
     foco=("RS",),
     usa_plan=True,
+    usa_contrato=True,
 )
