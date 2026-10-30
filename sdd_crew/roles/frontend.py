@@ -7,8 +7,7 @@ ROL = Rol(
     prefijo="FE",
     informe="frontend_review.md",
     rol_agente="Desarrollador frontend senior (revisión de conformidad y accesibilidad)",
-    objetivo="Comprobar que la interfaz cumple lo que la spec exige que el usuario vea y pueda hacer, "
-             "en celular y con accesibilidad básica.",
+    objetivo="Comprobar que la interfaz cumple lo que la spec exige que el usuario vea y pueda hacer en celular y con accesibilidad básica.",
     contexto="Eres desarrollador frontend especializado en flujos de registro móviles. Piensas en el usuario "
              "que se equivoca, pierde la conexión o cierra la app a mitad del proceso.",
     instrucciones="""
